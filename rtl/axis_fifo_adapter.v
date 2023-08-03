@@ -126,17 +126,17 @@ module axis_fifo_adapter #
 );
 
 // force keep width to 1 when disabled
-parameter S_BYTE_LANES = S_KEEP_ENABLE ? S_KEEP_WIDTH : 1;
-parameter M_BYTE_LANES = M_KEEP_ENABLE ? M_KEEP_WIDTH : 1;
+localparam S_BYTE_LANES = S_KEEP_ENABLE ? S_KEEP_WIDTH : 1;
+localparam M_BYTE_LANES = M_KEEP_ENABLE ? M_KEEP_WIDTH : 1;
 
 // bus byte sizes (must be identical)
-parameter S_BYTE_SIZE = S_DATA_WIDTH / S_BYTE_LANES;
-parameter M_BYTE_SIZE = M_DATA_WIDTH / M_BYTE_LANES;
+localparam S_BYTE_SIZE = S_DATA_WIDTH / S_BYTE_LANES;
+localparam M_BYTE_SIZE = M_DATA_WIDTH / M_BYTE_LANES;
 // output bus is wider
-parameter EXPAND_BUS = M_BYTE_LANES > S_BYTE_LANES;
+localparam EXPAND_BUS = M_BYTE_LANES > S_BYTE_LANES;
 // total data and keep widths
-parameter DATA_WIDTH = EXPAND_BUS ? M_DATA_WIDTH : S_DATA_WIDTH;
-parameter KEEP_WIDTH = EXPAND_BUS ? M_BYTE_LANES : S_BYTE_LANES;
+localparam DATA_WIDTH = EXPAND_BUS ? M_DATA_WIDTH : S_DATA_WIDTH;
+localparam KEEP_WIDTH = EXPAND_BUS ? M_BYTE_LANES : S_BYTE_LANES;
 
 // bus width assertions
 initial begin
