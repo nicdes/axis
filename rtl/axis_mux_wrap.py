@@ -122,7 +122,7 @@ module {{name}} #
      * Control
      */
     input  wire                  enable,
-    input  wire [{{cn-1}}:0]            select
+    input  wire [{{cn-1}}:0]            sel
 );
 
 axis_mux #(
@@ -160,7 +160,7 @@ axis_mux_inst (
     .m_axis_tuser(m_axis_tuser),
     // Control
     .enable(enable),
-    .select(select)
+    .select(sel)
 );
 
 endmodule
