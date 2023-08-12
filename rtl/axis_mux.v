@@ -86,7 +86,7 @@ module axis_mux #
      * Control
      */
     input  wire                          enable,
-    input  wire [$clog2(S_COUNT)-1:0]    select
+    input  wire [$clog2(S_COUNT)-1:0]    sel
 );
 
 parameter CL_S_COUNT = $clog2(S_COUNT);
@@ -132,10 +132,10 @@ always @* begin
         end
     end
 
-    if (!frame_reg && enable && (s_axis_tvalid & (1 << select))) begin
+    if (!frame_reg && enable && (s_axis_tvalid & (1 << sel))) begin
         // start of frame, grab select value
         frame_next = 1'b1;
-        select_next = select;
+        select_next = sel;
     end
 
     // generate ready signal on selected port

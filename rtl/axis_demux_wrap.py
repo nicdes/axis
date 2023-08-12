@@ -127,7 +127,7 @@ module {{name}} #
      */
     input  wire                     enable,
     input  wire                     drop,
-    input  wire [{{cn-1}}:0]               select
+    input  wire [{{cn-1}}:0]               sel
 );
 
 axis_demux #(
@@ -168,7 +168,7 @@ axis_demux_inst (
     // Control
     .enable(enable),
     .drop(drop),
-    .select(select)
+    .sel(sel)
 );
 
 endmodule

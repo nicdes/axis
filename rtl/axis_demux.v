@@ -91,7 +91,7 @@ module axis_demux #
      */
     input  wire                             enable,
     input  wire                             drop,
-    input  wire [$clog2(M_COUNT)-1:0]       select
+    input  wire [$clog2(M_COUNT)-1:0]       sel
 );
 
 parameter CL_M_COUNT = $clog2(M_COUNT);
@@ -161,8 +161,8 @@ always @* begin
                 drop_ctl = 1'b0;
             end
         end else begin
-            select_ctl = select;
-            drop_ctl = drop || select >= M_COUNT;
+            select_ctl = sel;
+            drop_ctl = drop || sel >= M_COUNT;
         end
         frame_ctl = 1'b1;
         if (!(s_axis_tready && s_axis_tvalid && s_axis_tlast)) begin

@@ -38,6 +38,7 @@ def generate(ports=4, name=None, output=None):
     t = Template(u"""/*
 
 Copyright (c) 2018-2021 Alex Forencich
+Copyright (c) 2023 Nico De Simone
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -122,7 +123,7 @@ module {{name}} #
      * Control
      */
     input  wire                  enable,
-    input  wire [{{cn-1}}:0]            sel
+    input  wire [{{cn-1}}:0]     sel
 );
 
 axis_mux #(
@@ -160,7 +161,7 @@ axis_mux_inst (
     .m_axis_tuser(m_axis_tuser),
     // Control
     .enable(enable),
-    .select(sel)
+    .sel(sel)
 );
 
 endmodule
